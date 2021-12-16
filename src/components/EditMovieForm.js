@@ -7,6 +7,7 @@ import axios from 'axios';
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
 
+
 	const { setMovies } = props;
 	const [movie, setMovie] = useState({
 		title:"",
@@ -24,7 +25,7 @@ const EditMovieForm = (props) => {
                 setMovie(res.data);
             })
 	}, [id]);
-	
+
 	const handleChange = (e) => {
         setMovie({
             ...movie,
@@ -43,17 +44,17 @@ const EditMovieForm = (props) => {
 				console.log(err);
 			})
 	}
-	
+
 	const { title, director, genre, metascore, description } = movie;
 
     return (
 	<div className="col">
 		<div className="modal-content">
 			<form onSubmit={handleSubmit}>
-				<div className="modal-header">						
+				<div className="modal-header">
 					<h4 className="modal-title">Editing <strong>{movie.title}</strong></h4>
 				</div>
-				<div className="modal-body">					
+				<div className="modal-body">
 					<div className="form-group">
 						<label>Title</label>
 						<input value={title} onChange={handleChange} name="title" type="text" className="form-control"/>
@@ -69,14 +70,14 @@ const EditMovieForm = (props) => {
 					<div className="form-group">
 						<label>Metascore</label>
 						<input value={metascore} onChange={handleChange} name="metascore" type="number" className="form-control"/>
-					</div>		
+					</div>
 					<div className="form-group">
 						<label>Description</label>
 						<textarea value={description} onChange={handleChange} name="description" className="form-control"></textarea>
 					</div>
-									
+
 				</div>
-				<div className="modal-footer">			    
+				<div className="modal-footer">
 					<input type="submit" className="btn btn-info" value="Save"/>
 					<Link to={`/movies/1`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
 				</div>
